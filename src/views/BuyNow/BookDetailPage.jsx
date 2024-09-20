@@ -7,12 +7,31 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Player } from "video-react";
 import { ReviewsBox } from "../../components/Reviews";
 import { Helmet } from "react-helmet";
-import { cartIcon } from "../../../public/images";
+import { cartIcon } from "/public/images";
+import { initBFCacheHandling } from "../../utils/bfcache";
 
 export const BookDetailPage = () => {
+  useEffect(() => {
+    const onShow = () => {
+      console.log("Page was restored from bfcache");
+      // Any reinitialization logic
+    };
+
+    const onHide = () => {
+      console.log("Page is being stored in bfcache");
+      // Any cleanup logic
+    };
+
+    initBFCacheHandling(onShow, onHide);
+
+    // Clean up event listeners when the component unmounts
+    return () => {
+      window.removeEventListener("pageshow", onShow);
+      window.removeEventListener("pagehide", onHide);
+    };
+  }, []);
   const { id, slug } = useParams();
   const navigate = useNavigate();
-  console.log(slug);
   const [bookDetail, bookDetailData] = useState({});
   const bookDataArray = [
     {
@@ -31,6 +50,10 @@ export const BookDetailPage = () => {
       hardcover: "",
       ebook: "3.99",
       slug: "spot-on-mystery-at-the-dog-rescue",
+      metaTitle:
+        "Spot On! - Mystery At The Dog Rescue | Best Dog Books for Kids",
+      metaDescription:
+        "Discover 'Spot On,' Mystery at the Dog Rescue collection of the best dog books for kids that will warm their hearts & spark their love.",
     },
     {
       id: 2,
@@ -48,6 +71,9 @@ export const BookDetailPage = () => {
       hardcover: "28.95",
       ebook: "3.99",
       slug: "spot-on-chaos-at-the-dog-rescue",
+      metaTitle: "Spot On! - Chaos At The Dog Rescue | Books for Dog Lovers",
+      metaDescription:
+        "Join the books for dog lovers in 'Spot On! Chaos At The Dog Rescue,' a tale that celebrates the bond between humans and dogs.",
     },
     {
       id: 3,
@@ -65,6 +91,9 @@ export const BookDetailPage = () => {
       hardcover: "",
       ebook: "9.99",
       slug: "spot-on-canine-babies-at-the-dog-rescue",
+      metaTitle: "Spot On! - Canine Babies | Personalized Dog Story Books",
+      metaDescription:
+        "Experience the personalized dog story books of 'Spot On! Canine Babies at The Dog Rescue,' where hearts are touched & tails are wagging.",
       reviews: [
         {
           authorName: "Gregory Charles",
@@ -123,6 +152,9 @@ export const BookDetailPage = () => {
       hardcover: "",
       ebook: "5.55",
       slug: "spot-on-canines-on-a-cruise-spots-legacy",
+      metaTitle: "Spot-on: Canines on a Cruise | Amazing Dog Stories Boo",
+      metaDescription:
+        "Set sail with furry companions and embark on an unforgettable adventure with 'Spot-On: Canines on a Cruise.' amazing dog stories book!",
       reviews: [
         {
           authorName: "Christopher Goodwin",
@@ -181,6 +213,9 @@ export const BookDetailPage = () => {
       hardcover: "",
       ebook: "0.00",
       slug: "spot-on-new-beginnings",
+      metaTitle: "SPOT- ON: NEW BEGINNINGS | Personalized Dog Books For Kids",
+      metaDescription:
+        "Embark on a journey of 'SPOT-ON: New Beginnings' with personalized dog books for kids. Inspire young minds with heartwarming stories of hope.",
     },
     {
       id: 6,
@@ -193,6 +228,9 @@ export const BookDetailPage = () => {
       paperback: "9.99",
       hardcover: "",
       ebook: "",
+      metaTitle: "MOVING ON: To New Heights &Adventures - Embrace Life!",
+      metaDescription:
+        "Embark on the inspiring journey of 'Moving On: To New Heights & New Adventures,' where change leads to growth and endless opportunities",
       slug: "moving-on-to-new-heights-and-new-adventures",
       reviews: [
         {
@@ -254,6 +292,9 @@ export const BookDetailPage = () => {
       hardcover: "",
       ebook: "4.99",
       slug: "new-beginnings-do-you-believe-in-ghosts",
+      metaTitle: "NEW BEGINNINGS: Do You Believe in Ghosts?",
+      metaDescription:
+        "Dive into the enigmatic world of 'NEW BEGINNINGS: Do You Believe in Ghosts?' and discover spine-tingling encounters with the supernatural.",
       reviews: [
         {
           authorName: "Amanda Liam",
@@ -323,6 +364,9 @@ export const BookDetailPage = () => {
       hardcover: "",
       ebook: "3.99",
       slug: "christmas-on-holiday-island",
+      metaTitle: "Christmas On Holiday Island | A JoyfulHoliday Story",
+      metaDescription:
+        "Explore Christmas On Holiday Island by Carolynn Tucciarone, a charmingstory that brings warmth and cheer to your holiday reading list.",
       // reviews: [
       //     {
       //         authorName: "Amanda Liam",
@@ -381,6 +425,7 @@ export const BookDetailPage = () => {
       hardcover: "30.69",
       ebook: "3.99",
       categoryLink: "book-detail",
+      slug: "",
     },
   ];
   useEffect(() => {
@@ -390,14 +435,14 @@ export const BookDetailPage = () => {
       }
     });
   }, []);
+  console.log("bookDetail.metaDescription", bookDetail.metaDescription);
+
   return (
     <LayoutTheme>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>
-          Illustration Book Detail - The world of Personalized Dog Books for
-          Adults
-        </title>
+        <title>{bookDetail.metaTitle}</title>
+        <meta name="description" content={bookDetail.metaDescription} />
         <link rel="canonical" href={window.location.href} />
       </Helmet>
       <SubHeader

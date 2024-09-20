@@ -1,5 +1,5 @@
 import React from "react";
-import { carolynLogo, cartIcon, searchIcon } from "../../../public/images";
+import { carolynLogo, cartIcon, searchIcon } from "/public/images";
 
 const Navbar = () => {
   return (

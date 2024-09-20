@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LayoutTheme from "../Layout";
 import { SubHeader } from "../../components/SubHeader";
 import dogBanner from "/images/contact-dog.png";
 import { Gallery } from "../../components/Gallery";
 import { Helmet } from "react-helmet";
 import BannerImage from "/images/hero-bg.png";
-
+import { initBFCacheHandling } from "../../utils/bfcache";
 const GalleryImages = [
   "gallery-1.png",
   "gallery-2.png",
@@ -22,6 +22,25 @@ const GalleryImages = [
 ];
 
 export const GalleryPage = () => {
+  useEffect(() => {
+    const onShow = () => {
+      console.log('Page was restored from bfcache');
+      // Any reinitialization logic
+    };
+
+    const onHide = () => {
+      console.log('Page is being stored in bfcache');
+      // Any cleanup logic
+    };
+
+    initBFCacheHandling(onShow, onHide);
+
+    // Clean up event listeners when the component unmounts
+    return () => {
+      window.removeEventListener('pageshow', onShow);
+      window.removeEventListener('pagehide', onHide);
+    };
+  }, []);
   return (
     <LayoutTheme>
       <Helmet>

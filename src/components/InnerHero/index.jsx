@@ -7,7 +7,10 @@ import {
   cartIcon,
   bookIocon,
   scrollIcon,
-} from "../../../public/images";
+  linkedin,
+  youTube,
+} from "/public/images";
+import { scrollToBottom } from "../../utils/bfcache";
 
 const InnerHero = () => {
   return (
@@ -15,7 +18,7 @@ const InnerHero = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-7">
-            <div className="hero_content">
+            <div className="">
               <h3 className="well_come">Welcome to Carolynntucciarone</h3>
               <h1>Discover The Secrets Of Holiday Island With Ava!</h1>
 
@@ -33,7 +36,10 @@ const InnerHero = () => {
                   </span>
                 </a>
               </div>
-              <div className="scroll_down_wrapper">
+              <div
+                className="scroll_down_wrapper"
+                onClick={() => scrollToBottom()}
+              >
                 <button className="scroll_down_btn">
                   <span className="scroll_icon">
                     <img src={scrollIcon} alt="" />
@@ -47,22 +53,31 @@ const InnerHero = () => {
                   href="https://www.facebook.com/AuthorCarolynnTucciarone/"
                   className="hero_social_icon"
                 >
-                  <img src={facebookIcon} />
+                  <img src={facebookIcon} alt="" />
                 </a>
                 <a
                   href="https://twitter.com/i/flow/login?redirect_after_login=%2FCarolynnAuthor"
                   className="hero_social_icon"
                 >
-                  <img src={twitterIcon} />
+                  <img src={twitterIcon} alt="" />
                 </a>
                 <a
                   href="https://www.instagram.com/authorcarolynntucciarone/"
                   className="hero_social_icon"
                 >
-                  <img src={instaIcon} />
+                  <img src={instaIcon} alt="" />
                 </a>
-                <a href="javascript:;" className="hero_social_icon">
-                  <img src={linkedinIcon} />
+                <a
+                  href="https://www.instagram.com/authorcarolynntucciarone/"
+                  className="hero_social_icon"
+                >
+                  <img src={linkedin} alt="" />
+                </a>{" "}
+                <a
+                  href="https://www.youtube.com/watch?app=desktop&v=7FiE6_UFISg"
+                  className="hero_social_icon"
+                >
+                  <img src={youTube} height={20} width={20} alt="" />
                 </a>
               </div>
             </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { cartIcon } from "../../../public/images";
+import { cartIcon } from "/public/images";
 
 export const About = (props) => {
   return (
@@ -9,13 +9,8 @@ export const About = (props) => {
         <div className="container-fluid p-0">
           <div className="row align-items-center">
             <div className="col-md-5">
-              <div
-                className="about_sec_img"
-                data-aos="fade-right"
-                data-aos-duration="2000"
-                data-aos-easing="ease-in"
-              >
-                <img src={props.img} />
+              <div className="about_sec_img">
+                <img src={props.img} alt="" />
               </div>
             </div>
             <div className="col-md-7">

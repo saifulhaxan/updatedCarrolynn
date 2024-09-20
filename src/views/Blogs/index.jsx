@@ -11,11 +11,31 @@ import {
   instaIcon,
   linkedinIcon,
   scrollIcon,
-} from "../../../public/images";
+} from "/public/images";
+import { initBFCacheHandling } from "../../utils/bfcache";
+import { Helmet } from "react-helmet";
 
 const BlogPosts = () => {
   const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    const onShow = () => {
+      console.log("Page was restored from bfcache");
+      // Any reinitialization logic
+    };
 
+    const onHide = () => {
+      console.log("Page is being stored in bfcache");
+      // Any cleanup logic
+    };
+
+    initBFCacheHandling(onShow, onHide);
+
+    // Clean up event listeners when the component unmounts
+    return () => {
+      window.removeEventListener("pageshow", onShow);
+      window.removeEventListener("pagehide", onHide);
+    };
+  }, []);
   useEffect(() => {
     const apiUrl = "https://carolynntucciarone.com/admin/wp-json/wp/v2/posts/";
     document.querySelector(".loaderBox").classList.add("d-block");
@@ -28,7 +48,6 @@ const BlogPosts = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         // Fetch and attach featured images for each post
         const fetchFeaturedImages = data.map((post) => {
           if (post.featured_media) {
@@ -63,6 +82,15 @@ const BlogPosts = () => {
 
   return (
     <LayoutTheme>
+      <Helmet>
+        <title>Blogs | Carolynn Tucciarone’s Latest Posts</title>
+        <meta
+          name="description"
+          content="Follow Carolynn Tucciarone’s blogs for the latest updates, ideas, and reflections. Don’t
+miss out on her regularly updated blogs."
+        />
+        <link rel="canonical" href="https://carolynntucciarone.com/blogs/" />
+      </Helmet>
       <SubHeader name="Blogs" img={BannerImage} subHeading="our blogs" />
       <div className="blogListing">
         <div className="row">

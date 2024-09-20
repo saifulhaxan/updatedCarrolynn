@@ -12,7 +12,9 @@ import {
   instaIcon,
   shareIcon,
   twitterIcon,
-} from "../../../public/images";
+  linkedin,
+  youTube,
+} from "/public/images";
 
 export const Footer = () => {
   const footerdata = [
@@ -95,7 +97,7 @@ export const Footer = () => {
                 <div className="footer__about">
                   <div className="footer__logo">
                     <a href="javascript:;">
-                      <img src={carolynLogo} />
+                      <img src={carolynLogo} alt="" />
                     </a>
                   </div>
                   <div className="footer__about-body">
@@ -110,19 +112,31 @@ export const Footer = () => {
                       href="https://www.facebook.com/AuthorCarolynnTucciarone/"
                       className="social_icon"
                     >
-                      <img src={facebookIcon} />
+                      <img src={facebookIcon} alt="" />
                     </a>
                     <a
                       href="https://twitter.com/i/flow/login?redirect_after_login=%2FCarolynnAuthor"
                       className="social_icon"
                     >
-                      <img src={twitterIcon} />
+                      <img src={twitterIcon} alt="" />
                     </a>
                     <a
                       href="https://www.instagram.com/authorcarolynntucciarone/"
                       className="social_icon"
                     >
-                      <img src={instaIcon} />
+                      <img src={instaIcon} alt="" />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/carolynn-tucciarone-8970a68"
+                      className="social_icon"
+                    >
+                      <img src={linkedin} />
+                    </a>
+                    <a
+                      href="https://www.youtube.com/watch?app=desktop&v=7FiE6_UFISg"
+                      className="social_icon"
+                    >
+                      <img src={youTube} height={20} width={20} />
                     </a>
                   </div>
                 </div>
@@ -162,6 +176,19 @@ export const Footer = () => {
               <div className="col-lg-2">
                 <div className="footer__quick-links">
                   <h3 class="foooter__subhead">Quick Links</h3>
+                  <ul className="footer__links">
+                  <li className="footer__link">
+                    <Link to="/TermsAndConditions">Terms & conditions</Link>
+                  </li>
+                  <li className="footer__link">
+                    <Link to="/PrivacyPolicy">Privacy Policy</Link>
+                  </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="col-lg-4">
+                <div className="footer__quick-links">
+                  <h3 class="foooter__subhead">Contact Us</h3>
                   <ul className="footer__links footer_email_link">
                     <li className="footer__link">
                       <span>Email Address</span>
@@ -170,11 +197,6 @@ export const Footer = () => {
                       </Link>
                     </li>
                   </ul>
-                </div>
-              </div>
-              <div className="col-lg-4">
-                <div className="footer__quick-links">
-                  <h3 class="foooter__subhead">Contact Us</h3>
                   <div className="footer_form">
                     <form>
                       <div class="mb-3">

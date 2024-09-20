@@ -1,5 +1,5 @@
 import React from "react";
-import { cartIcon, christmasHolyday } from "../../../public/images";
+import { cartIcon, christmasHolyday } from "/public/images";
 
 const Christmas = () => {
   return (
@@ -77,7 +77,7 @@ const Christmas = () => {
               data-aos-duration="2000"
               data-aos-easing="ease-in"
             >
-              <img src={christmasHolyday} />
+              <img src={christmasHolyday} alt=''  />
             </div>
           </div>
         </div>

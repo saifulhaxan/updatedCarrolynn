@@ -1,15 +1,15 @@
 /**
-    * @description      : 
-    * @author           : Saif
-    * @group            : 
-    * @created          : 17/05/2024 - 23:01:27
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 17/05/2024
-    * - Author          : Saif
-    * - Modification    : 
-**/
+ * @description      :
+ * @author           : Saif
+ * @group            :
+ * @created          : 17/05/2024 - 23:01:27
+ *
+ * MODIFICATION LOG
+ * - Version         : 1.0.0
+ * - Date            : 17/05/2024
+ * - Author          : Saif
+ * - Modification    :
+ **/
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import { AboutPage } from "../views/About";
 import { BuyNow } from "../views/BuyNow";
@@ -23,6 +23,8 @@ import { Trailer } from "../views/Trailor";
 import BlogPosts from "../views/Blogs";
 import { BlogDetails } from "../views/Blogs/blogDetails";
 import BetaHome from "../views/Beta";
+import { TermsAndConditions } from "../views/TermsAndConditions";
+import { PrivacyPolicy } from "../views/PrivacyPolicy";
 
 function AppRouter() {
   return (
@@ -35,6 +37,8 @@ function AppRouter() {
         <Route path="/gallery" element={<GalleryPage />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/reviews" element={<ReviewPage />} />
+        <Route path="/TermsAndConditions" element={<TermsAndConditions />} />
+        <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
         <Route path="/blogs" element={<BlogPosts />} />
         <Route path="/blogs/:sulg/:id" element={<BlogDetails />} />
         <Route path="/trailers" element={<Trailer />} />

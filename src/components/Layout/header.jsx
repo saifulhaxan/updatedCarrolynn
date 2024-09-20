@@ -1,20 +1,20 @@
 /**
-    * @description      : 
-    * @author           : Saif
-    * @group            : 
-    * @created          : 18/05/2024 - 00:15:22
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 18/05/2024
-    * - Author          : Saif
-    * - Modification    : 
-**/
+ * @description      :
+ * @author           : Saif
+ * @group            :
+ * @created          : 18/05/2024 - 00:15:22
+ *
+ * MODIFICATION LOG
+ * - Version         : 1.0.0
+ * - Date            : 18/05/2024
+ * - Author          : Saif
+ * - Modification    :
+ **/
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import hamburger from "/images/hamburger.png";
 import logo from "/images/logo.png";
-import { cartIcon, searchIcon, carolynLogo } from "../../../public/images";
+import { cartIcon, searchIcon, carolynLogo } from "/public/images";
 import menuIcon from "/images/menu-icon.png";
 
 export const Header = () => {

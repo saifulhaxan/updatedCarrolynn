@@ -5,7 +5,10 @@ import {
   instaIcon,
   shareIcon,
   twitterIcon,
-} from "../../../public/images";
+  linkedin,
+  youTube,
+
+} from "/public/images";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -48,7 +51,7 @@ const Footer = () => {
                 <div className="footer__about">
                   <div className="footer__logo">
                     <a href="javascript:;">
-                      <img src={carolynLogo} />
+                      <img src={carolynLogo} alt=''  />
                     </a>
                   </div>
                   <div className="footer__about-body">
@@ -60,13 +63,25 @@ const Footer = () => {
                   </div>
                   <div className="social_icons">
                     <a href="javascript:;" className="social_icon">
-                      <img src={facebookIcon} />
+                      <img src={facebookIcon} alt='' />
                     </a>
                     <a href="javascript:;" className="social_icon">
-                      <img src={twitterIcon} />
+                      <img src={twitterIcon} alt=''  />
                     </a>
                     <a href="javascript:;" className="social_icon">
-                      <img src={instaIcon} />
+                      <img src={instaIcon}  alt='' />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/carolynn-tucciarone-8970a68"
+                      className="social_icon"
+                    >
+                      <img src={linkedin} />
+                    </a>
+                    <a
+                      href="https://www.youtube.com/watch?app=desktop&v=7FiE6_UFISg"
+                      className="social_icon"
+                    >
+                      <img src={youTube} height={20} width={20} />
                     </a>
                   </div>
                 </div>

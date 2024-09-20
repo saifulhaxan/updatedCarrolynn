@@ -17,7 +17,10 @@ import {
   linkedinIcon,
   scrollIcon,
   twitterIcon,
-} from "../../../public/images";
+  linkedin,
+  youTube,
+} from "/public/images";
+import { scrollToBottom } from "../../utils/bfcache";
 
 export const SubHeader = (props) => {
   const [firstBook, secondBook] = useState(false);
@@ -30,7 +33,6 @@ export const SubHeader = (props) => {
     secondBook(true);
   }
 
-  console.log('ss', props.firstBook)
 
   return (
     // <div
@@ -62,14 +64,14 @@ export const SubHeader = (props) => {
                 {props?.subHeading}
               </h3>
               )}
-              <h1
+              <h2
                 className="inner_heading"
                 data-aos="fade-right"
                 data-aos-duration="2000"
                 data-aos-easing="ease-in"
               >
                 {props?.name}
-              </h1>
+              </h2>
 
               {props?.action && (
                 <div
@@ -101,26 +103,35 @@ export const SubHeader = (props) => {
                   href="https://www.facebook.com/AuthorCarolynnTucciarone/"
                   className="inner_hero_social_icon"
                 >
-                  <img src={facebookIcon} />
+                  <img src={facebookIcon} alt='' />
                 </a>
                 <a
                   href="https://twitter.com/i/flow/login?redirect_after_login=%2FCarolynnAuthor"
                   className="inner_hero_social_icon"
                 >
-                  <img src={twitterIcon} />
+                  <img src={twitterIcon} alt='' />
                 </a>
                 <a
                   href="https://www.instagram.com/authorcarolynntucciarone/"
                   className="inner_hero_social_icon"
                 >
-                  <img src={instaIcon} />
+                  <img src={instaIcon}  alt='' />
                 </a>
-                {/* <a href="javascript:;" className="inner_hero_social_icon">
-                  <img src={linkedinIcon} />
-                </a> */}
+                <a
+                  href="https://www.instagram.com/authorcarolynntucciarone/"
+                  className="inner_hero_social_icon"
+                >
+                  <img src={linkedin} alt="" />
+                </a>{" "}
+                <a
+                  href="https://www.youtube.com/watch?app=desktop&v=7FiE6_UFISg"
+                  className="inner_hero_social_icon"
+                >
+                  <img src={youTube} height={20} width={20} alt="" />
+                </a>
               </div>
 
-              <div className="inner_scroll_down_wrapper">
+              <div className="inner_scroll_down_wrapper" onClick={() => scrollToBottom()} >
                 <button className="inner_scroll_down_btn">
                   <span className="inner_scroll_icon">
                     <img src={scrollIcon} alt="" />

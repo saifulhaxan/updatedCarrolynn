@@ -4,6 +4,7 @@ import { SubHeader } from '../../components/SubHeader'
 import dogBanner from '/images/gallery-dog2.png'
 import BannerImage from "/images/hero-bg.png";
 import { useNavigate, useParams } from 'react-router-dom'
+import { initBFCacheHandling } from '../../utils/bfcache';
 
 
 export const BlogDetails = () => {
@@ -11,7 +12,25 @@ export const BlogDetails = () => {
     const navigate = useNavigate();
 
     const [blogDetail, setBlogDetail] = useState({});
-
+    useEffect(() => {
+        const onShow = () => {
+          console.log('Page was restored from bfcache');
+          // Any reinitialization logic
+        };
+    
+        const onHide = () => {
+          console.log('Page is being stored in bfcache');
+          // Any cleanup logic
+        };
+    
+        initBFCacheHandling(onShow, onHide);
+    
+        // Clean up event listeners when the component unmounts
+        return () => {
+          window.removeEventListener('pageshow', onShow);
+          window.removeEventListener('pagehide', onHide);
+        };
+      }, []);
     useEffect(() => {
         const apiDetailUrl = `https://carolynntucciarone.com/admin/wp-json/wp/v2/posts/${id}`;
         document.querySelector('.loaderBox').classList.add('d-block');

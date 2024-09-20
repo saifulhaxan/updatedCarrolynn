@@ -578,7 +578,7 @@ $( function() {
 				row.find('.check-column checkbox').prop('checked', false);
 
 				if ( lock_data.avatar_src ) {
-					avatar = $( '<img />', {
+					avatar = $( '<img  alt=""/>', {
 						'class': 'avatar avatar-18 photo',
 						width: 18,
 						height: 18,

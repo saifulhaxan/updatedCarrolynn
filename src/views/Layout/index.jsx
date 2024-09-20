@@ -10,12 +10,30 @@
     * - Author          : Saif
     * - Modification    : 
 **/
-import React from "react";
+import React, { useEffect } from "react";
 import { Footer } from "../../components/Layout/footer";
 import { Header } from "../../components/Layout/header";
-
+import { initBFCacheHandling } from "../../utils/bfcache";
 const LayoutTheme = (props) => {
-
+    useEffect(() => {
+        const onShow = () => {
+          console.log('Page was restored from bfcache');
+          // Any reinitialization logic
+        };
+    
+        const onHide = () => {
+          console.log('Page is being stored in bfcache');
+          // Any cleanup logic
+        };
+    
+        initBFCacheHandling(onShow, onHide);
+    
+        // Clean up event listeners when the component unmounts
+        return () => {
+          window.removeEventListener('pageshow', onShow);
+          window.removeEventListener('pagehide', onHide);
+        };
+      }, []);
  return (
     <div className={`themeLayout ${props?.className ? props?.className : ''}`}>
         <div className="headerLayout">

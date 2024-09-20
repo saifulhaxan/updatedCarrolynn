@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LayoutTheme from "../Layout";
 import { SubHeader } from "../../components/SubHeader";
 import dogBanner from "/images/gallery-dog2.png";
@@ -13,9 +13,29 @@ import {
   scrollIcon,
   emailIcon,
   shareIcon,
-} from "../../../public/images";
+} from "/public/images";
+import { initBFCacheHandling } from "../../utils/bfcache";
 
 export const ContactUs = () => {
+  useEffect(() => {
+    const onShow = () => {
+      console.log("Page was restored from bfcache");
+      // Any reinitialization logic
+    };
+
+    const onHide = () => {
+      console.log("Page is being stored in bfcache");
+      // Any cleanup logic
+    };
+
+    initBFCacheHandling(onShow, onHide);
+
+    // Clean up event listeners when the component unmounts
+    return () => {
+      window.removeEventListener("pageshow", onShow);
+      window.removeEventListener("pagehide", onHide);
+    };
+  }, []);
   return (
     <LayoutTheme>
       <Helmet>

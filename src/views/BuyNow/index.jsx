@@ -10,13 +10,14 @@
     * - Author          : Saif
     * - Modification    : 
 **/
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { SubHeader } from "../../components/SubHeader";
 import dogBanner from "/images/contact-dog.png";
 import LayoutTheme from "../Layout";
 import { BookBox } from "../../components/BookBox";
 import BannerImage from "/images/hero-bg.png";
+import { initBFCacheHandling } from "../../utils/bfcache";
 // import Book1 from "/images/book-1.png";
 // import Book2 from "/images/book-2.png";
 
@@ -281,9 +282,26 @@ const illustrationbooks = [
 export const BuyNow = () => {
   const [firstBook, secondBook] = useState(false);
 
+  useEffect(() => {
+    const onShow = () => {
+      console.log('Page was restored from bfcache');
+      // Any reinitialization logic
+    };
 
+    const onHide = () => {
+      console.log('Page is being stored in bfcache');
+      // Any cleanup logic
+    };
 
-  console.log("firstBook" , firstBook)
+    initBFCacheHandling(onShow, onHide);
+
+    // Clean up event listeners when the component unmounts
+    return () => {
+      window.removeEventListener('pageshow', onShow);
+      window.removeEventListener('pagehide', onHide);
+    };
+  }, []);
+
   function showFirstBook() {
     secondBook(false);
   }

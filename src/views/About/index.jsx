@@ -1,15 +1,15 @@
 /**
-    * @description      : 
-    * @author           : Saif
-    * @group            : 
-    * @created          : 18/05/2024 - 00:13:58
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 18/05/2024
-    * - Author          : Saif
-    * - Modification    : 
-**/
+ * @description      :
+ * @author           : Saif
+ * @group            :
+ * @created          : 18/05/2024 - 00:13:58
+ *
+ * MODIFICATION LOG
+ * - Version         : 1.0.0
+ * - Date            : 18/05/2024
+ * - Author          : Saif
+ * - Modification    :
+ **/
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import LayoutTheme from "../Layout";
@@ -22,9 +22,10 @@ import { Contact } from "../../components/Contact";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import { Link } from "react-router-dom";
-import { aboutAthor, cartIcon } from "../../../public/images";
+import { aboutAthor, cartIcon } from "/public/images";
 import InnerHero from "../../components/InnerHero";
 import BannerImage from "/images/hero-bg.png";
+import { initBFCacheHandling } from "../../utils/bfcache";
 
 const AboutData = [
   "As a passionate reader and author, I understand the importance of catering to specific interests and providing personalized experiences through literature. That is why I am delighted to present to you my latest creation—an exceptional addition to the world of personalized dog books for adults.",
@@ -73,6 +74,25 @@ const responsive = {
 const canonialLink = window.location.href;
 
 export const AboutPage = () => {
+  useEffect(() => {
+    const onShow = () => {
+      console.log("Page was restored from bfcache");
+      // Any reinitialization logic
+    };
+
+    const onHide = () => {
+      console.log("Page is being stored in bfcache");
+      // Any cleanup logic
+    };
+
+    initBFCacheHandling(onShow, onHide);
+
+    // Clean up event listeners when the component unmounts
+    return () => {
+      window.removeEventListener("pageshow", onShow);
+      window.removeEventListener("pagehide", onHide);
+    };
+  }, []);
   useEffect(() => {
     const canonialLink = window.location.href;
   }, []);
@@ -208,10 +228,10 @@ export const AboutPage = () => {
       {/* review section  */}
 
       {/* <div className="Feedback modified_feedback"> */}
-        {/* <div class="Feedback_img_1">
+      {/* <div class="Feedback_img_1">
           <img src="/images/feedback-dog.png" alt="FeedBack image" />
         </div> */}
-        {/* <div class="feedback_top">
+      {/* <div class="feedback_top">
           <h3>About The Authore</h3>
           <h2>What Our Client’s Say</h2>
           <p>
@@ -222,13 +242,13 @@ export const AboutPage = () => {
           </p>
         </div> */}
 
-        {/* <div class="centered_title_with_subhead">
+      {/* <div class="centered_title_with_subhead">
           <h3>About The Authore</h3>
           <h2>What Our Client’s Say</h2>
 
         </div> */}
 
-        {/* <Swiper
+      {/* <Swiper
           navigation={true}
           spaceBetween={50}
           slidesPerView={2}
@@ -269,7 +289,7 @@ export const AboutPage = () => {
               );
             })}
         </Swiper> */}
-        {/* <div className="viewMore">
+      {/* <div className="viewMore">
           <Link to="/reviews" className="btn">
             Read More
           </Link>

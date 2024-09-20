@@ -7,7 +7,10 @@ import {
   instaIcon,
   twitterIcon,
   linkedinIcon,
-} from "../../../public/images";
+  linkedin,
+  youTube,
+} from "/public/images";
+import { scrollToBottom } from "../../utils/bfcache";
 
 const Hero = () => {
   return (
@@ -61,7 +64,10 @@ const Hero = () => {
                   </span>
                 </a>
               </div>
-              <div className="scroll_down_wrapper">
+              <div
+                className="scroll_down_wrapper"
+                onClick={() => scrollToBottom()}
+              >
                 <button className="scroll_down_btn">
                   <span className="scroll_icon">
                     <img src={scrollIcon} alt="" />
@@ -72,16 +78,28 @@ const Hero = () => {
               <div className="hero_social_icons">
                 <span className="hero_social_text">FOLLOW US:</span>
                 <a href="javascript:;" className="hero_social_icon">
-                  <img src={facebookIcon} />
+                  <img src={facebookIcon} alt="" />
                 </a>
                 <a href="javascript:;" className="hero_social_icon">
-                  <img src={twitterIcon} />
+                  <img src={twitterIcon} alt="" />
                 </a>
                 <a href="javascript:;" className="hero_social_icon">
-                  <img src={instaIcon} />
+                  <img src={instaIcon} alt="" />
                 </a>
                 <a href="javascript:;" className="hero_social_icon">
-                  <img src={linkedinIcon} />
+                  <img src={linkedinIcon} alt="" />
+                </a>
+                <a
+                  href="https://www.instagram.com/authorcarolynntucciarone/"
+                  className="hero_social_icon"
+                >
+                  <img src={linkedin} alt="" />
+                </a>{" "}
+                <a
+                  href="https://www.youtube.com/watch?app=desktop&v=7FiE6_UFISg"
+                  className="hero_social_icon"
+                >
+                  <img src={youTube} height={20} width={20} alt="" />
                 </a>
               </div>
             </div>

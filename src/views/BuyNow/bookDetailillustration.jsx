@@ -7,9 +7,29 @@ import { useNavigate, useParams } from "react-router-dom";
 import { Player } from "video-react";
 import { ReviewsBox } from "../../components/Reviews";
 import { Helmet } from "react-helmet";
-import { cartIcon } from "../../../public/images";
+import { cartIcon } from "/public/images";
+import { initBFCacheHandling } from "../../utils/bfcache";
 
 export const BookDetailIllusrationPage = () => {
+  useEffect(() => {
+    const onShow = () => {
+      console.log("Page was restored from bfcache");
+      // Any reinitialization logic
+    };
+
+    const onHide = () => {
+      console.log("Page is being stored in bfcache");
+      // Any cleanup logic
+    };
+
+    initBFCacheHandling(onShow, onHide);
+
+    // Clean up event listeners when the component unmounts
+    return () => {
+      window.removeEventListener("pageshow", onShow);
+      window.removeEventListener("pagehide", onHide);
+    };
+  }, []);
   const { id, slug } = useParams();
   const navigate = useNavigate();
 
@@ -19,6 +39,9 @@ export const BookDetailIllusrationPage = () => {
       id: 1,
       head: "Spot On: Chaos At The Dog Rescue",
       slug: "spot-on-chaos-at-the-rescue",
+      metaTitle: "spot-on-chaos-at-the-rescue",
+      metaDescription:
+        "Experience heartwarming moments & hilarious mishaps as we delve into the chaotic world of a dog rescue in 'Spot On: Chaos At The Dog Rescue'.",
       desc: "To Lynn, handling some of the worst scenarios is not an unusual condition. Its her life’s work. But when a kidnapping and a murder happen, her focus all of a sudden changes. Something has to be done and Lynn is fearless enough to try..",
       completedDescription: [
         "To Lynn, handling some of the worst scenarios is not an unusual condition. Its her life’s work. But when a kidnapping and a murder happen, her focus all of a sudden changes. Something has to be done and Lynn is fearless enough to try.",
@@ -87,6 +110,11 @@ export const BookDetailIllusrationPage = () => {
       id: 2,
       head: "Spot On: Mystery At The Dog Rescue",
       slug: "spot-on-mystery-at-the-dog-rescue",
+      metaTitle:
+        "Spot On! - Mystery At The Dog Rescue | Best Dog Books for Kids",
+      metaDescription:
+        "Spot On! - Mystery At The Dog Rescue | Best Dog Books for Kids",
+
       desc: "When Lynn wakes up to find some of her rescue dogs missing, she is terrified. Who would steal her dogs, and for what purpose? The mystery continues when a man is found shot to death at Lynn’s shelter.It soon becomes apparent her pups were stolen to send to China to take part in dogfights. Lynn and her friends cannot let this happen so rush to save their precious pets...",
       completedDescription: [
         "When Lynn wakes up to find some of her rescue dogs missing, she is terrified. Who would steal her dogs, and for what purpose? The mystery continues when a man is found shot to death at Lynn’s shelter.",
@@ -146,6 +174,9 @@ export const BookDetailIllusrationPage = () => {
       id: 3,
       head: "Spot On: Canine Babies At The Dog Rescue",
       slug: "spot-on-canine-babies-at-the-dog-rescue",
+      metaTitle: "spot-on-canine-babies-at-the-dog-rescue",
+      metaDescription:
+        "Experience the heartwarming story of adorable canine babies finding their forever homes in 'Spot On: Canine Babies' at the Dog Rescue",
       desc: "When Lynn wakes up to find some of her rescue dogs missing, she is terrified. Who would steal her dogs, and for what purpose? The mystery continues when a man is found shot to death at Lynn’s shelter.It soon becomes apparent her pups were stolen to send to China to take part in dogfights. Lynn and her friends cannot let this happen so rush to save their precious pet...",
       completedDescription: [
         "When Lynn wakes up to find some of her rescue dogs missing, she is terrified. Who would steal her dogs, and for what purpose? The mystery continues when a man is found shot to death at Lynn’s shelter.",
@@ -173,6 +204,9 @@ export const BookDetailIllusrationPage = () => {
       hardcover: "",
       ebook: "3.99",
       slug: "spot-on-canines-on-a-cruise",
+      metaTitle: "Spot-on: Canines on a Cruise | Amazing Dog Stories Book",
+      metaDescription:
+        "Set sail with furry companions and embark on an unforgettable adventure with 'Spot-On: Canines on a Cruise.' amazing dog stories book!",
     },
     {
       id: 5,
@@ -186,6 +220,9 @@ export const BookDetailIllusrationPage = () => {
       hardcover: "",
       ebook: "3.49",
       slug: "spot-on-new-beginnings",
+      metaTitle: "SPOT-ON: New Beginnings - Journey of Hope and Transformation",
+      metaDescription:
+        "Discover inspiring stories of resilience, renewal, and new beginnings in 'SPOT-ON: New Beginnings. Embrace the power of positive change.",
       reviews: [
         {
           authorName: "Carlos Wayne.",
@@ -245,11 +282,16 @@ export const BookDetailIllusrationPage = () => {
       hardcover: "",
       ebook: "3.49",
       slug: "spot-on-moving-on-who-believes-in-ghosts",
+      metaTitle: "NEW BEGINNINGS: Do You Believe in Ghosts?",
+      metaDescription:
+        "Explore the realms of the supernatural and unravel mysteries in 'New Beginnings: Do You Believe in Ghosts? Dare to confront the unknown.",
     },
     {
       id: 7,
       head: "Moving On: To New Heights & And New Adventures",
       slug: "spot-on-moving-on-to-new-heights-and-new-adventures",
+      metaTitle: "",
+      metaDescription: "",
       desc: "Inspired by actual events, a woman and her friends explore new adventures, ups, and downs on a road trip. She has never traveled alone, so she decides to travel with her close friend. She deeply felt and flawlessly recounted the...",
       completedDescription: [
         "Inspired by actual events, a woman and her friends explore new adventures, ups , and downs on a road trip. She has never traveled alone, so she decides to travel with her close friend. She deeply felt and flawlessly recounted the journey of exploration—of the world outside and the soul within—that takes her to new heights and New adventures. However, living a life of purpose isn't always as simple as it appears. In truth, it was, at times, tedious, draining, and even desperate. However, she achieved the confidence and experience for which she had yearned. This book explains how she grew stronger on The road and experienced the highs and lows of new experiences. On her road journey with her companion, Moving on: To new heights and new adventures is a narrative about a lady learning and unlearning, from backroads to breakdowns and New adventures.",
@@ -307,6 +349,9 @@ export const BookDetailIllusrationPage = () => {
       id: 8,
       head: "PETEY: THE BULL TERRIER",
       slug: "petey-the-bull-terrier",
+      metaTitle: "PETEY: THE BULL TERRIER - A Dog's Tale of Friendship!",
+      metaDescription:
+        "Follow the heartwarming tale of Petey: the Bull Terrier, and discover the incredible bond that unites a dog and its human companion",
       desc: "This book is different from my Spot-on series and my Moving On series. This book is about a bull terrier named Petey. he goes on And adventure with his pals from the gromming place and the Dog show...",
       completedDescription: [
         "This book is different from my Spot-on series and my Moving On series. This book is about a bull terrier named Petey. he goes on And adventure with his pals from the gromming place and the Dog show.",
@@ -375,6 +420,9 @@ export const BookDetailIllusrationPage = () => {
       paperback: "14.50",
       hardcover: "",
       slug: "moving-on-getting-out-of-the-box",
+      metaTitle: "GETTING OUT OF THE BOX - A Journey of Unleashing Potential!",
+      metaDescription:
+        "Read Getting Out Of The Box, a powerful narrative by Carolynn Tucciarone that encourages stepping beyond boundaries and embracing growth.",
       ebook: "",
       reviews: [
         {
@@ -445,6 +493,10 @@ export const BookDetailIllusrationPage = () => {
       hardcover: "",
       ebook: "",
       slug: "moving-on-welcome-to-a-new-year-of-mystery-and-chaos",
+      metaTitle:
+        "New Year of Mystery And Chaos: A Year Full of Surprises & Thrills",
+      metaDescription:
+        "Step into a New Year of Mystery and Chaos! Brace yourself for thrilling adventures, unexpected twists, and unforgettable moments.",
       reviews: [
         {
           authorName: "Emily Wills",
@@ -505,6 +557,9 @@ export const BookDetailIllusrationPage = () => {
       ebook: "3.99",
       categoryLink: "book-detail",
       slug: "stepping-out-of-the-box",
+      metaTitle: "Moving On: Stepping Out Of The Box | Personal Growth Story",
+      metaDescription:
+        "Experience Moving On: Stepping Out Of The Box by Carolynn Tucciarone, a thoughtful exploration of life transitions and personal development.",
     },
   ];
   useEffect(() => {
@@ -518,9 +573,8 @@ export const BookDetailIllusrationPage = () => {
     <LayoutTheme>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>
-          Story Book Detail - The world of Personalized Dog Books for Adults
-        </title>
+        <title>{bookDetail.metaTitle}</title>
+        <meta name="description" content={bookDetail.metaDescription} />
         <link rel="canonical" href={window.location.href} />
       </Helmet>
       {/* <SubHeader name="Book Detail" img={BannerImage} /> */}

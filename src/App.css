@@ -1,10 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
+
+@font-face {
+  font-family: "Bbagian";
+  src: url("./font/bBagian.otf");
+} */
 
 @font-face {
   font-family: "Bbagian";
   src: url("./font/bBagian.otf");
 }
-
+@font-face {
+  font-family: "agency";
+  src: url("./font/AGENCYB.TTF");
+}
 a {
   text-decoration: none;
 }
@@ -12,7 +20,7 @@ p,
 button,
 input,
 textarea {
-  /* font-family: "Merriweather", serif; */
+  font-family: "Merriweather", serif;
   font-family: "Jost", sans-serif;
   text-decoration: none !important;
 }
@@ -28,22 +36,18 @@ p {
   line-height: 30px !important;
 }
 
-
 .homeBooks .book_bottom > section:last-child {
-    order: 1;
-    margin-top: 3rem;
+  order: 1;
+  margin-top: 3rem;
 }
 
 .homeBooks .book_bottom > section:first-child {
   order: 2;
 }
 
-
 a.inner_hero_btn.active {
   background-color: #fff;
 }
-
-
 
 @media (max-width: 800px) {
   p {
@@ -94,7 +98,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Bbagian";
+  /* font-family: "Reggae One"; */
   /* color: white; */
   color: #000;
 }
@@ -1346,8 +1350,6 @@ button[disabled] {
   border-radius: 50px;
 }
 
-
-
 .videoTrailor .swiper-slide-next {
   margin-right: 0px !important;
   margin-left: -85px !important;
@@ -1654,11 +1656,9 @@ body {
   }
 }
 
-
 .feedback_card {
   flex-grow: 1;
 }
-
 
 /* .swiper-button-prev {
   left: 0;
@@ -1823,7 +1823,7 @@ body {
 
 /* Inner Banner CSS Start */
 .inner_hero_sec {
-  background: url(/public/images/hero-bg.png);
+  background: url(/public/images/hero-bg-96268d6b.webp);
   /* height: 100vh; */
   background-size: cover;
   display: flex;
@@ -2463,11 +2463,9 @@ body {
   } */
 }
 @media (max-width: 736px) {
-
   .videoTrailor .swiper-wrapper > .swiper-slide {
     margin-left: 0 !important;
-}
-
+  }
 
   .inner_hero_content {
     margin-left: 0px;
@@ -2671,4 +2669,13 @@ body {
     max-width: 365px;
     margin: 0 auto 10px;
   }
+}
+
+.testimonal_img {
+  display: none !important;
+}
+
+.hero_content,
+.inner_hero_content {
+  padding-left: 30px;
 }

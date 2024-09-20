@@ -8,7 +8,6 @@ export const Counter = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log(data);
 
                 // Update the counter state with the new count from the response
                 setCounter(data?.data);

@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import LayoutTheme from "../Layout";
 import { SubHeader } from "../../components/SubHeader";
-import dogBanner from "/images/gallery-dog2.png";
 import { ReviewsBox } from "../../components/Reviews";
 import { Helmet } from "react-helmet";
 import BannerImage from "/images/hero-bg.png";
-
+import { initBFCacheHandling } from "../../utils/bfcache";
 const videoLink = [
   "ChristmasOnHolidayIsland",
   "MovingOnWelcometoaNewYearofMysteryAndChaos!",
@@ -18,26 +17,41 @@ const videoLink = [
 ];
 
 export const Trailer = () => {
-  // Sample data array containing review data
+  useEffect(() => {
+    const onShow = () => {
+      console.log("Page was restored from bfcache");
+      // Any reinitialization logic
+    };
 
+    const onHide = () => {
+      console.log("Page is being stored in bfcache");
+      // Any cleanup logic
+    };
+
+    initBFCacheHandling(onShow, onHide);
+
+    // Clean up event listeners when the component unmounts
+    return () => {
+      window.removeEventListener("pageshow", onShow);
+      window.removeEventListener("pagehide", onHide);
+    };
+  }, []);
   return (
     <LayoutTheme>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>
-          Riveting Rollercoaster: A Thrilling Best Dog Books for Kids Reviews
-        </title>
+        <title>Trailers | Book Previews by Carolynn Tucciarone</title>
         <meta
           name="description"
-          content="Captivating from start to finish! A masterful blend of suspense and emotions that are best dog books for kids. A must-read for all."
+          content="Explore captivating trailers for Carolynn Tucciarone’s works, offering insight into her
+inspiring and heartfelt storie"
         />
         <link rel="canonical" href={window.location.href} />
       </Helmet>
-      <SubHeader name="Trailers" img={BannerImage} subHeading="our blogs" />
-
+      <SubHeader name="Trailers" img={BannerImage} subHeading="OUR TRAILERS" />
       <div className="Feedbacks trailorAlign">
         {videoLink.map((videoLinkData, index) => (
-          <ReviewsBox videoContent={videoLinkData} />
+          <ReviewsBox key={index} videoContent={videoLinkData} />
         ))}
       </div>
     </LayoutTheme>

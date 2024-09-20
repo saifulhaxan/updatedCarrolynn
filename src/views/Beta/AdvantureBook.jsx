@@ -1,5 +1,5 @@
 import React from "react";
-import { movingBook, cartIcon } from "../../../public/images";
+import { movingBook, cartIcon } from "/public/images";
 
 const AdvantureBook = () => {
   return (

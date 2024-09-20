@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { movingStepbox, cartIcon } from "../../../public/images";
+import { movingStepbox, cartIcon } from "/public/images";
 
 const MovingSection = () => {
   const [bookDetail, bookDetailData] = useState({});
@@ -390,7 +390,7 @@ const MovingSection = () => {
               data-aos-duration="2000"
               data-aos-easing="ease-in"
             >
-              <img src={movingStepbox} />
+              <img src={movingStepbox}  alt='' />
             </div>
           </div>
           <div className="col-md-7">

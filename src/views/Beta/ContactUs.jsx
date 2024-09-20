@@ -5,7 +5,9 @@ import {
   twitterIcon,
   instaIcon,
   shareIcon,
-} from "../../../public/images";
+  linkedin,
+  youTube,
+} from "/public/images";
 
 const ContactUs = () => {
   return (
@@ -39,7 +41,7 @@ const ContactUs = () => {
                 <div className="contactUsSec_email">
                   <div className="textWith_icon">
                     <div className="textWith_icon_icon">
-                      <img src={emailIcon} />
+                      <img src={emailIcon} alt="" />
                     </div>
                     <div className="textWith_icon_text">
                       <h4>Email us on:</h4>
@@ -49,13 +51,25 @@ const ContactUs = () => {
                   <div className="social_icons">
                     <span className="social_text">FOLLOW US:</span>
                     <a href="javascript:;" className="social_icon">
-                      <img src={facebookIcon} />
+                      <img src={facebookIcon} alt="" />
                     </a>
                     <a href="javascript:;" className="social_icon">
-                      <img src={twitterIcon} />
+                      <img src={twitterIcon} alt="" />
                     </a>
                     <a href="javascript:;" className="social_icon">
-                      <img src={instaIcon} />
+                      <img src={instaIcon} alt="" />
+                    </a>
+                    <a
+                      href="https://www.instagram.com/authorcarolynntucciarone/"
+                      className="social_icon"
+                    >
+                      <img src={linkedin} height={20} width={20} alt="" />
+                    </a>{" "}
+                    <a
+                      href="https://www.youtube.com/watch?app=desktop&v=7FiE6_UFISg"
+                      className="social_icon"
+                    >
+                      <img src={youTube} height={20} width={20} alt="" />
                     </a>
                   </div>
                 </div>

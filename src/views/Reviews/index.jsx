@@ -1,12 +1,31 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import LayoutTheme from "../Layout";
 import { SubHeader } from "../../components/SubHeader";
 import dogBanner from "/images/gallery-dog2.png";
 import { ReviewsBox } from "../../components/Reviews";
 import { Helmet } from "react-helmet";
 import BannerImage from "/images/hero-bg.png";
-
+import { initBFCacheHandling } from "../../utils/bfcache";
 export const ReviewPage = () => {
+  useEffect(() => {
+    const onShow = () => {
+      console.log('Page was restored from bfcache');
+      // Any reinitialization logic
+    };
+
+    const onHide = () => {
+      console.log('Page is being stored in bfcache');
+      // Any cleanup logic
+    };
+
+    initBFCacheHandling(onShow, onHide);
+
+    // Clean up event listeners when the component unmounts
+    return () => {
+      window.removeEventListener('pageshow', onShow);
+      window.removeEventListener('pagehide', onHide);
+    };
+  }, []);
   // Sample data array containing review data
   const feebackdata = [
     {

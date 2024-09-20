@@ -7,11 +7,12 @@ import masterunion2 from "/images/masterunion2.png";
 import { Link } from "react-router-dom";
 
 export const BookBox = (props) => {
+  const sortedBookData = [...props.BookData].reverse();
+  console.log('sortedBookData',props.BookData, sortedBookData);
   return (
     <div className="book_bottom">
       {props.BookData &&
-        props.BookData.map((BookListing, index) => {
-          console.log(index);
+        sortedBookData.map((BookListing, index) => {
           return (
             <section
               className={

@@ -13,7 +13,9 @@ import {
   twitterIcon,
   instaIcon,
   shareIcon,
-} from "../../../public/images";
+  // linkedin,
+  youTube,
+} from "/public/images";
 
 export const Contact = (props) => {
   const contactinfo = [
@@ -37,7 +39,6 @@ export const Contact = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
 
     try {
       // Send form data to the PHP script using Axios (replace 'your_php_script.php' with your actual PHP script URL)
@@ -195,7 +196,7 @@ export const Contact = (props) => {
                   <div className="contactUsSec_email">
                     <div className="textWith_icon">
                       <div className="textWith_icon_icon">
-                        <img src={emailIcon} />
+                        <img src={emailIcon} alt="" />
                       </div>
                       <div className="textWith_icon_text">
                         <h4>Email us on:</h4>
@@ -212,20 +213,21 @@ export const Contact = (props) => {
                         href="https://www.facebook.com/AuthorCarolynnTucciarone/"
                         className="social_icon"
                       >
-                        <img src={facebookIcon} />
+                        <img src={facebookIcon} alt="" />
                       </a>
                       <a
                         href="https://twitter.com/i/flow/login?redirect_after_login=%2FCarolynnAuthor"
                         className="social_icon"
                       >
-                        <img src={twitterIcon} />
+                        <img src={twitterIcon} alt="" />
                       </a>
                       <a
                         href="https://www.instagram.com/authorcarolynntucciarone/"
                         className="social_icon"
                       >
-                        <img src={instaIcon} />
+                        <img src={instaIcon} alt="" />
                       </a>
+                     
                     </div>
                   </div>
                 </div>
@@ -296,7 +298,6 @@ export const Contact = (props) => {
                         </div>
                       </form>
                     </div>
-
                   </div>
                 </div>
               </div>

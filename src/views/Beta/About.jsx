@@ -1,5 +1,5 @@
 import React from "react";
-import { aboutAthor, cartIcon } from "../../../public/images";
+import { aboutAthor, cartIcon } from "/public/images";
 
 const AboutSection = () => {
   return (
@@ -9,11 +9,11 @@ const AboutSection = () => {
           <div className="col-md-5">
             <div
               className="about_sec_img"
-              data-aos="fade-right"
-              data-aos-duration="2000"
-              data-aos-easing="ease-in"
+              // data-aos="fade-right"
+              // data-aos-duration="2000"
+              // data-aos-easing="ease-in"
             >
-              <img src={aboutAthor} />
+              {/* <img src={aboutAthor} /> */}
             </div>
           </div>
           <div className="col-md-7">
@@ -21,26 +21,26 @@ const AboutSection = () => {
               <div className="sec_title">
                 <h3
                   className="sec_title_h3 pink-color"
-                  data-aos="fade-left"
-                  data-aos-duration="2000"
-                  data-aos-easing="ease-in"
+                  // data-aos="fade-left"
+                  // data-aos-duration="2000"
+                  // data-aos-easing="ease-in"
                 >
                   About The Author
                 </h3>
                 <h2
                   className="sec_title_h2 black-color"
-                  data-aos="fade-right"
-                  data-aos-duration="2000"
-                  data-aos-easing="ease-in"
+                  // data-aos="fade-right"
+                  // data-aos-duration="2000"
+                  // data-aos-easing="ease-in"
                 >
                   About The Author
                 </h2>
               </div>
               <div
                 className="sec_p black-color"
-                data-aos="fade-up"
-                data-aos-duration="2000"
-                data-aos-easing="ease-in"
+                // data-aos="fade-up"
+                // data-aos-duration="2000"
+                // data-aos-easing="ease-in"
               >
                 <p className="black-color">
                   As an avid reader and writer, I recognize the significance of
@@ -91,9 +91,9 @@ const AboutSection = () => {
               </div>
               <div
                 className="body_btns"
-                data-aos="fade-left"
-                data-aos-duration="2000"
-                data-aos-easing="ease-in"
+                // data-aos="fade-left"
+                // data-aos-duration="2000"
+                // data-aos-easing="ease-in"
               >
                 <a href="javascript:;" className="btn_with_icon">
                   <span>Read More</span>
