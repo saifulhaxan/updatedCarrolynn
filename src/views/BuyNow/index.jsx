@@ -1,15 +1,15 @@
 /**
-    * @description      : 
-    * @author           : Saif
-    * @group            : 
-    * @created          : 17/05/2024 - 23:54:38
-    * 
-    * MODIFICATION LOG
-    * - Version         : 1.0.0
-    * - Date            : 17/05/2024
-    * - Author          : Saif
-    * - Modification    : 
-**/
+ * @description      :
+ * @author           : Saif
+ * @group            :
+ * @created          : 17/05/2024 - 23:54:38
+ *
+ * MODIFICATION LOG
+ * - Version         : 1.0.0
+ * - Date            : 17/05/2024
+ * - Author          : Saif
+ * - Modification    :
+ **/
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { SubHeader } from "../../components/SubHeader";
@@ -32,8 +32,9 @@ const bookDataArray = [
     paperback: "10.99",
     hardcover: "",
     ebook: "3.99",
-    categoryLink: "book-detail",
-    slug: "christmas-on-holiday-island",
+ 
+    categoryLink: "book-detail-illustration",
+    slug: "stepping-out-of-the-box",
   },
   {
     id: 1,
@@ -113,6 +114,7 @@ const bookDataArray = [
     categoryLink: "book-detail",
     slug: "moving-on-to-new-heights-and-new-adventures",
   },
+
   {
     id: 7,
     head: "NEW BEGINNINGS: DO YOU BELIEVE IN GHOSTS?",
@@ -125,6 +127,32 @@ const bookDataArray = [
     ebook: "4.99",
     categoryLink: "book-detail",
     slug: "new-beginnings-do-you-believe-in-ghosts",
+  },
+  {
+    id: 8,
+    head: "Christmas On Holiday Island",
+    desc: 'Are you yearning for a holiday story that transcends time and blends the enchantment of the season with tales of enduring family bonds? Are you ready for a magical journey? Introducing the mesmerizing world of "Christmas on Holiday Island," where a historic rocky mountain town sets the stage for an unforgettable journey.',
+    img: "book-card-img-9",
+    trailer: "ChristmasOnHolidayIsland",
+    link: "dp/B0CTL1Y4C9",
+    paperback: "10.99",
+    hardcover: "",
+    ebook: "3.99",
+    categoryLink: "book-detail",
+    slug: "christmas-on-holiday-island",
+  },
+  {
+    id: 99,
+    head: "Holiday Island New Life Begins",
+    desc: "If you liked Christmas at Holiday Island, you will love this sequel. Ava and Bruce start their life on Christmas Island. They run into many obstacles. The past comes back to haunt Ava for information on a murder. Bruce ends up fighting for his life in a foreign country.",
+    img: "book-card-img-99",
+    trailer: "ChristmasOnHolidayIsland",
+    link: "dp/B0DH8JDH89",
+    paperback: "10.99",
+    hardcover: "",
+    ebook: "3.99",
+    categoryLink: "book-detail",
+    slug: "christmas-on-holiday-island",
   },
 ];
 
@@ -284,12 +312,12 @@ export const BuyNow = () => {
 
   useEffect(() => {
     const onShow = () => {
-      console.log('Page was restored from bfcache');
+      console.log("Page was restored from bfcache");
       // Any reinitialization logic
     };
 
     const onHide = () => {
-      console.log('Page is being stored in bfcache');
+      console.log("Page is being stored in bfcache");
       // Any cleanup logic
     };
 
@@ -297,8 +325,8 @@ export const BuyNow = () => {
 
     // Clean up event listeners when the component unmounts
     return () => {
-      window.removeEventListener('pageshow', onShow);
-      window.removeEventListener('pagehide', onHide);
+      window.removeEventListener("pageshow", onShow);
+      window.removeEventListener("pagehide", onHide);
     };
   }, []);
 
@@ -309,14 +337,14 @@ export const BuyNow = () => {
   function showSecondBook() {
     secondBook(true);
   }
-  const storystatus = () =>{
+  const storystatus = () => {
     // alert("data")
-    secondBook(false)
-  }
-  const illustrationstatus = () =>{
+    secondBook(false);
+  };
+  const illustrationstatus = () => {
     // alert("data")
-    secondBook(true)
-  }
+    secondBook(true);
+  };
   return (
     <LayoutTheme>
       <Helmet>
@@ -335,15 +363,16 @@ export const BuyNow = () => {
         name="Books"
         img={dogBanner}
       /> */}
-      <SubHeader 
-      storystatus={storystatus}
-      illustrationstatus={illustrationstatus}
-      name="our books" 
-      img={BannerImage} 
-      subHeading="Books" 
-      firstBook={firstBook}
-      status={false}
-      action />
+      <SubHeader
+        storystatus={storystatus}
+        illustrationstatus={illustrationstatus}
+        name="our books"
+        img={BannerImage}
+        subHeading="Books"
+        firstBook={firstBook}
+        status={false}
+        action
+      />
 
       {/* <section class="section_without_bg">
         <div class="container">
