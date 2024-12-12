@@ -36,18 +36,30 @@ const BlogPosts = () => {
       window.removeEventListener("pagehide", onHide);
     };
   }, []);
-  useEffect(() => {
-    const apiUrl = "https://carolynntucciarone.com/admin/wp-json/wp/v2/posts/";
-    document.querySelector(".loaderBox").classList.add("d-block");
 
-    fetch(apiUrl)
-      .then((response) => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const postsPerPage = 10; // Define the number of posts per page
+
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const apiUrl = `https://carolynntucciarone.com/admin/wp-json/wp/v2/posts/?per_page=${postsPerPage}&page=${currentPage}`;
+      document.querySelector(".loaderBox").classList.add("d-block");
+
+      try {
+        const response = await fetch(apiUrl);
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        return response.json();
-      })
-      .then((data) => {
+
+        const totalPosts = response.headers.get("X-WP-Total");
+        const totalPages = response.headers.get("X-WP-TotalPages");
+
+        setTotalPages(parseInt(totalPages));
+
+        const data = await response.json();
+
         // Fetch and attach featured images for each post
         const fetchFeaturedImages = data.map((post) => {
           if (post.featured_media) {
@@ -66,19 +78,28 @@ const BlogPosts = () => {
           }
         });
 
-        Promise.all(fetchFeaturedImages)
-          .then((postsWithFeaturedImages) => {
-            document.querySelector(".loaderBox").classList.remove("d-block");
-            setPosts(postsWithFeaturedImages);
-          })
-          .catch((error) => {
-            console.error("Error fetching featured images:", error);
-          });
-      })
-      .catch((error) => {
+        const postsWithFeaturedImages = await Promise.all(fetchFeaturedImages);
+        setPosts(postsWithFeaturedImages);
+      } catch (error) {
         console.error("Error fetching posts:", error);
-      });
-  }, []);
+      } finally {
+        document.querySelector(".loaderBox").classList.remove("d-block");
+      }
+    };
+
+    fetchPosts();
+  }, [currentPage]);
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage((prevPage) => prevPage - 1);
+    }
+  };
+
+
+  const handlePageClick = (page) => {
+    setCurrentPage(page);
+  };
 
   return (
     <LayoutTheme>
@@ -119,6 +140,19 @@ miss out on her regularly updated blogs."
         </div>
         <div className="loaderBox">
           <div class="spinner"></div>
+        </div>
+        <div className="pagination">
+          {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+            (pageNumber) => (
+              <button
+                key={pageNumber}
+                onClick={() => handlePageClick(pageNumber)}
+                className={pageNumber === currentPage ? "active" : ""}
+              >
+                {pageNumber}
+              </button>
+            )
+          )}
         </div>
       </div>
     </LayoutTheme>

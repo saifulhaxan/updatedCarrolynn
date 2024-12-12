@@ -75,6 +75,11 @@ a.inner_hero_btn.active {
   padding: 6rem 0;
 }
 
+
+.pagination button.active {
+  background-color: #ff97e2;
+}
+
 .Feedbacks {
   display: flex;
   flex-wrap: wrap;
